@@ -2,7 +2,16 @@ package com.testttb.CRM_Servcie.CRM_Servcie.HttpService;
 
 public class CreateTicketDTO {
        private Long customerId;
-       private String accountId;
+
+       public Long getAccountId() {
+              return accountId;
+       }
+
+       public void setAccountId(Long accountId) {
+              this.accountId = accountId;
+       }
+
+       private Long accountId;
        private String ticketType;
        private String description;
        private String status;
@@ -15,13 +24,6 @@ public class CreateTicketDTO {
               this.customerId = customerId;
        }
 
-       public String getAccountId() {
-              return accountId;
-       }
-
-       public void setAccountId(String accountId) {
-              this.accountId = accountId;
-       }
 
        public String getTicketType() {
               return ticketType;

@@ -8,6 +8,8 @@ public class ServiceRequestDto {
 
     private Long customerId;
 
+    private Long accountId;
+
     private String requestType;
 
     private String description;
@@ -72,5 +74,13 @@ public class ServiceRequestDto {
 
     public void setUpdatedAt(String updatedAt) {
         this.updatedAt = updatedAt;
+    }
+
+    public Long getAccountId() {
+        return accountId;
+    }
+
+    public void setAccountId(Long accountId) {
+        this.accountId = accountId;
     }
 }

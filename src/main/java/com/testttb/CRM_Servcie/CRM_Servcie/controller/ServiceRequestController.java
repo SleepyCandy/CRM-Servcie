@@ -1,10 +1,15 @@
 package com.testttb.CRM_Servcie.CRM_Servcie.controller;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.testttb.CRM_Servcie.CRM_Servcie.DTO.ResponseDto;
 import com.testttb.CRM_Servcie.CRM_Servcie.DTO.ServiceRequestDto;
 import com.testttb.CRM_Servcie.CRM_Servcie.service.ServiceRequestService;
+import com.testttb.CRM_Servcie.CRM_Servcie.service.TestService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import javax.security.auth.login.AccountNotFoundException;
 
 @RestController
 @RequestMapping("/api/requests")
@@ -13,9 +18,13 @@ public class ServiceRequestController {
     @Autowired
     private ServiceRequestService serviceRequestService;
 
+    @Autowired
+    TestService testService;
+
     @PostMapping
-    public ResponseEntity<ServiceRequestDto> createRequest(@RequestBody ServiceRequestDto requestDto) {
-        return ResponseEntity.ok(serviceRequestService.createRequest(requestDto));
+    public ResponseEntity<ResponseDto> createRequest(@RequestBody ServiceRequestDto requestDto) throws AccountNotFoundException, JsonProcessingException {
+        testService.testCustomTracing();
+        return ResponseEntity.ok(new ResponseDto("0000","success",serviceRequestService.createRequest(requestDto)));
     }
 
     @GetMapping("/{id}")

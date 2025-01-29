@@ -14,7 +14,6 @@ public class RestFulService {
     }
 
     public String forwardRequestToService(CreateTicketDTO requestDto,String uri) {
-        // ส่ง POST Request ไปยัง Service ปลายทาง
         return webClient.post()
                 .uri(uri)
                 .bodyValue(requestDto)
